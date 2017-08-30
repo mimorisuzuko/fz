@@ -1,0 +1,9 @@
+{
+  "name": "fz",
+  "version": "0.0.1",
+  "description": "My fuzzy search",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Hiroki Usuba <hrky0206@gmail.com> (http://mimorisuzuko.github.io/)",
+  "license": "MIT"
+}
