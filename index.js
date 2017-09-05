@@ -4,14 +4,13 @@
  * @param {boolean} ignoreCase
  * @returns {{ matched: boolean, char: string }[]}
  */
-module.exports = (target, input, ignoreCase = false) => {
+const fz = (target, input, ignoreCase = false) => {
 	const targetChars = [...target];
 	const inputChars = [...(ignoreCase ? input.toLowerCase() : input)];
 
 	let targetIndex = 0;
 	const { length: targetLength } = targetChars;
 	let inputIndex = 0;
-	let matched = false;
 	const results = [];
 
 	while (targetIndex < targetLength) {
@@ -22,7 +21,6 @@ module.exports = (target, input, ignoreCase = false) => {
 				matched: true,
 				char,
 			});
-			matched = true;
 			inputIndex += 1;
 		} else {
 			results.push({
@@ -35,7 +33,9 @@ module.exports = (target, input, ignoreCase = false) => {
 	}
 
 	return {
-		matched,
+		matched: inputIndex === input.length,
 		results
 	};
 };
+
+module.exports = fz;
