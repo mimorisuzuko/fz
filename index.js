@@ -11,19 +11,21 @@ module.exports = (target, input, ignoreCase = false) => {
 	let targetIndex = 0;
 	const { length: targetLength } = targetChars;
 	let inputIndex = 0;
-	const output = [];
+	let matched = false;
+	const results = [];
 
 	while (targetIndex < targetLength) {
 		const char = targetChars[targetIndex];
 
 		if ((ignoreCase ? char.toLowerCase() : char) === inputChars[inputIndex]) {
-			output.push({
+			results.push({
 				matched: true,
 				char,
 			});
+			matched = true;
 			inputIndex += 1;
 		} else {
-			output.push({
+			results.push({
 				matched: false,
 				char
 			});
@@ -32,5 +34,8 @@ module.exports = (target, input, ignoreCase = false) => {
 		targetIndex += 1;
 	}
 
-	return output;
+	return {
+		matched,
+		results
+	};
 };
